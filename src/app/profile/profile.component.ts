@@ -7,9 +7,11 @@ import { Component } from '@angular/core';
 })
 
 export class ProfileComponent {
-  nombre: String = "Luke"
-  apellido: String = "Skywalker"
-  email: String = "lskywalker@mail.com"
+  nombre: String = "Luke";
+  apellido: String = "Skywalker";
+  email: String = "lskywalker@mail.com";
   phone: number = 612345678;
-  address: String = ""
+  address: String = "Tatooine";
+  curso: String = "Programación Web FullStack";
+  promedio: number = 10;
 }
