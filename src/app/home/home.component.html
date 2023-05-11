@@ -1,0 +1,148 @@
+<!-- Prueba Notificaciones -->
+<div class="alert alert-warning alert-dismissible" role="alert">
+    ¡Tienes <a routerLink="/notifications" class="alert-link">notificaciones</a> pendientes!
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<!-- /Prueba Notificaciones -->
+<main class="container text-center">
+    <h1>Bienvenido, Nombre!</h1>
+    <section class="row">
+        <!-- Foto y Nombre -->
+        <div class="col">
+            <div class="card mb-4">
+                <div class="card-body text-center">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                        class="rounded-circle img-fluid" style="width: 150px;">
+                    <h5 class="my-3">Nombre Apellido</h5>
+                    <p class="text-muted mb-1">Curso: curso</p>
+                    <p class="text-muted mb-4">Promedio de Notas: notas</p>
+                </div>
+            </div>
+        </div>
+        <!-- /Foto y Nombre -->
+    </section>
+    <!-- Notas -->
+    <section class="row">
+        <h2>Cursos</h2>
+        <div class="card mb-4">
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <th>#</th>
+                        <th>Asignatura</th>
+                        <th>Nota</th>
+                    </thead>
+                    <tr>
+                        <td>1</td>
+                        <td>asignatura.nombre</td>
+                        <td>nota</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>asignatura.nombre</td>
+                        <td>nota</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>asignatura.nombre</td>
+                        <td>nota</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>asignatura.nombre</td>
+                        <td>nota</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+    <!-- TODO List -->
+    <section>
+
+        <div class="row d-flex py-3">
+            <div class="col">
+                <div class="card rounded-3">
+                    <div class="card-body p-4">
+
+                        <h3 class="text-center my-3 pb-3">To Do List</h3>
+
+                        <form class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
+                            <div class="col-12">
+                                <div class="form-outline">
+                                    <input type="text" id="form1" class="form-control" placeholder="Ingresa la tarea" />
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </form>
+
+                        <table class="table mb-4">
+                            <thead>
+                                <tr>
+                                    <th scope="col">No.</th>
+                                    <th scope="col">Item</th>
+                                    <th scope="col">Estatus</th>
+                                    <th scope="col">Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>tarea.text</td>
+                                    <td>tarea.estado</td>
+                                    <td>
+                                        <button type="submit" class="btn btn-success mx-1">Listo</button>
+                                        <button type="submit" class="btn btn-danger mx-1" data-bs-toggle="modal"
+                                            data-bs-target="#modalConfirmar">Borrar</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>tarea.text</td>
+                                    <td>tarea.estado</td>
+                                    <td>
+                                        <button type="submit" class="btn btn-success mx-1">Listo</button>
+                                        <button type="submit" class="btn btn-danger mx-1" data-bs-toggle="modal"
+                                            data-bs-target="#modalConfirmar">Borrar</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>tarea.text</td>
+                                    <td>tarea.estado</td>
+                                    <td>
+                                        <button type="submit" class="btn btn-success mx-1">Listo</button>
+                                        <button type="submit" class="btn btn-danger mx-1" data-bs-toggle="modal"
+                                            data-bs-target="#modalConfirmar">Borrar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /TODO List -->
+</main>
+<!-- Modal Confirmar Borrar -->
+<div class="modal fade" id="modalConfirmar" tabindex="-1" aria-labelledby="modalConfirmarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalConfirmarLabel">Confirmar Borrar</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>¿Seguro de que deseas borrar esta tarea?</p><br>
+                <p>Los cambios no podrán ser desechos.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-danger">Borrar</button>
+            </div>
+        </div>
+    </div>
+</div>
