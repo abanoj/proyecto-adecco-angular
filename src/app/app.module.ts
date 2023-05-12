@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core'; 
-import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -20,8 +20,9 @@ import { ReportComponent } from './report/report.component';
     ReportComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    BrowserModule,
     FormsModule,
   ],
   providers: [],
