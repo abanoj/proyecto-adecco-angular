@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Usuario } from '../usuario';
 
 @Component({
   selector: 'app-profile',
@@ -7,11 +8,19 @@ import { Component } from '@angular/core';
 })
 
 export class ProfileComponent {
-  nombre: String = "Luke";
-  apellido: String = "Skywalker";
-  email: String = "lskywalker@mail.com";
-  phone: number = 612345678;
-  address: String = "Tatooine";
+  usuario: Usuario = {
+    dni: "86257123N",
+    nombre: "Luke",
+    apellido: "Skywalker",
+    username: "lskywalker",
+    password: "l21sa@848$",
+    telefono: 612345678,
+    email: "lskywalker@mail.com",
+    direccion: "Tatooine",
+    tipo: 1,
+    activo: true
+  }
+
   curso: String = "Programación Web FullStack";
   promedio: number = 10;
 }
