@@ -8,28 +8,18 @@ import { Nota } from '../nota';
   styleUrls: ['./report.component.css']
 })
 export class ReportComponent {
-  notas: Nota[] = [
-    { alumno: "Luke Skylwaker",
-      curso: "Programación Web 2023",
-      asignatura: "Java",
-      nota: 9.5
-    },
-    { alumno: "Luke Skylwaker",
-      curso: "Programación Web 2023",
-      asignatura: "Javascript",
-      nota: 8
-    },
-    {
-      alumno: "Owen Lars",
-      curso: "Programación Web 2023",
-      asignatura: "SQL",
-      nota: 7
-    },
-    {
-      alumno: "Obi-Wan Kenobi",
-      curso: "Programación Web 2023",
-      asignatura: "Java",
-      nota: 10
-    }
-  ]
+
+  notas: Nota[] = []
+  nota = new Nota("", "", "", 0);
+
+  addNota(formData: any){
+    this.nota = new Nota(
+      formData.alumno,
+      formData.curso,
+      formData.asignatura,
+      formData.nota
+    );
+    this.notas.push(this.nota);
+  }
+
 }
