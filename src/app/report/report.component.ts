@@ -8,15 +8,24 @@ import { Nota } from '../nota';
   templateUrl: './report.component.html',
   styleUrls: ['./report.component.css']
 })
+
 export class ReportComponent {
 
   notas: Nota[] = [];
-  
+  myNota?: Nota;
+
   addNotaForm = new FormGroup ({
     alumno: new FormControl(''),
     curso: new FormControl(''),
     asignatura: new FormControl(''),
     nota: new FormControl(0),
+  });
+
+  editNotaForm = new FormGroup ({
+    alumno: new FormControl(this.myNota?.alumno),
+    curso: new FormControl(this.myNota?.curso),
+    asignatura: new FormControl(this.myNota?.asignatura),
+    nota: new FormControl(this.myNota?.nota),
   });
 
   addNotaSubmit(){
@@ -30,23 +39,15 @@ export class ReportComponent {
       this.addNotaForm.reset();
   };
 
-  // alumno:String = "";
-  // curso:String = "";
-  // asignatura:String = "";
-  // nota:number = 0;
+  editNotaSubmit(){
+    const currentNota = this.editNotaForm.value.nota;
+    const element = this.notas.find(el => el.alumno === this.myNota?.alumno);
+    if(currentNota && element){
+      element.nota = currentNota;
+    }
+  }
 
-  // addNota(){
-  //   const n = new Nota(
-  //     this.alumno,
-  //     this.curso,
-  //     this.asignatura,
-  //     this.nota
-  //   );
-  //   this.notas.push(n);
-  //   this.alumno = "";
-  //   this.curso = "";
-  //   this.asignatura = "";
-  //   this.nota = 0;
-  // }
-
+  leerFila(nota: Nota){
+    this.myNota = nota;
+  }
 }
