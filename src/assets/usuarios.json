@@ -1,0 +1,41 @@
+[
+  {
+    "dni": "00523821F",
+    "nombre": "Jose",
+    "apellido": "Perez",
+    "email": "mail@example.com",
+    "username": "joseperez",
+    "password": "ads5153-",
+    "foto": null,
+    "direccion": null,
+    "telefono": null,
+    "tipo": 1,
+    "activo": true
+  },
+  {
+    "dni": "Y6168872G",
+    "nombre": "Rosa",
+    "apellido": "Perez",
+    "email": "mail@example.com",
+    "username": "rperez",
+    "password": "rnf57$",
+    "foto": null,
+    "direccion": null,
+    "telefono": null,
+    "tipo": 1,
+    "activo": true
+  },
+  {
+    "dni": "59442902T",
+    "nombre": "Carlos",
+    "apellido": "Ramirez",
+    "email": "mail@example.com",
+    "username": "cramirez",
+    "password": "aknfcka212",
+    "foto": null,
+    "direccion": null,
+    "telefono": null,
+    "tipo": 1,
+    "activo": true
+  }
+]

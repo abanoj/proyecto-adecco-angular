@@ -1,20 +1,20 @@
 <div class="container d-flex text-center align-items-center" style="min-height: 90vh;">
   <main class="col-md-6 mx-auto">
     <h1>LOGIN</h1>
-    <form action="" method="post">
+    <form [formGroup]="loginForm" (submit)="checkLogin()">
       <div class="row mb-3">
-        <label for="username" class="col-md-2 col-form-label">Usuario</label>
-        <div class="col-md-10">
-          <input type="text" id="username" class="form-control" name="username" placeholder="Usuario">
+        <label for="username" class="col-lg-2 col-form-label">Usuario</label>
+        <div class="col-lg-10">
+          <input type="text" id="username" class="form-control" name="username" formControlName="username" #username>
         </div>
       </div>
       <div class="row mb-3">
-        <label for="password" class="col-md-2 col-form-label">Contraseña</label>
-        <div class="col-md-10">
-          <input type="password" id="password" class="form-control" name="password" placeholder="Contraseña">
+        <label for="password" class="col-lg-2 col-form-label">Contraseña</label>
+        <div class="col-lg-10">
+          <input type="password" id="password" class="form-control" name="password" formControlName="password" #password>
         </div>
       </div>
-      <input type="submit" class="btn btn-primary col-8 text-center" value="Login">
+      <input type="submit" class="btn btn-primary col-8 text-center" [disabled]="!loginForm.valid" value="Login">
     </form>
     <a href="http://" target="_blank" rel="noopener noreferrer">¿Olvidaste la contraseña?</a>
   </main>

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Usuario } from '../usuario';
+import { UsuariosService } from '../usuarios.service';
+
 
 @Component({
   selector: 'app-profile',
@@ -8,6 +10,10 @@ import { Usuario } from '../usuario';
 })
 
 export class ProfileComponent {
+  usuarios: any;
+
+  constructor(private usuariosService: UsuariosService){}
+
   usuario: Usuario = {
     dni: "86257123N",
     nombre: "Luke",
@@ -23,4 +29,9 @@ export class ProfileComponent {
 
   curso: String = "Programación Web FullStack";
   promedio: number = 10;
+
+  ngOnInit(){
+    this.usuarios = this.usuariosService.getUsuariosData();
+    console.log(this.usuarios);
+  }
 }

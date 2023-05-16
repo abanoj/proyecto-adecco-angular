@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -24,6 +25,7 @@ import { ReportComponent } from './report/report.component';
     ReactiveFormsModule,
     BrowserModule,
     FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
