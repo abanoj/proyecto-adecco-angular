@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, } from '@angular/common/http';
 import { Usuario } from './usuario';
 
 @Injectable({
@@ -25,6 +25,25 @@ export class UsuariosService {
   }
 
   getUsuariosData(){
-    return this.http.get('/assets/usuarios.json');
-  }  
+    return this.http.get('/assets/usuarios.json').subscribe(
+      data => {
+        console.log(data);        
+      },
+      error => {
+        console.log(error);
+        
+      }
+    );
+  } 
+
+  loginUsuario(body: object){
+    this.http.post('http://localhost:8080/api/usuario/login', body).subscribe(
+      data => {
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
 }

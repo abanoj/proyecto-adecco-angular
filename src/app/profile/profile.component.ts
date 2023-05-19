@@ -31,7 +31,6 @@ export class ProfileComponent {
   promedio: number = 10;
 
   ngOnInit(){
-    this.usuarios = this.usuariosService.getUsuariosData();
-    console.log(this.usuarios);
+    this.usuariosService.getUsuariosData();
   }
 }
