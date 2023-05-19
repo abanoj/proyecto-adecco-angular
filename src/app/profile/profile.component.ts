@@ -11,6 +11,7 @@ import { UsuariosService } from '../usuarios.service';
 
 export class ProfileComponent {
   usuarios: any;
+  authToken = localStorage.getItem('authToken');
 
   constructor(private usuariosService: UsuariosService){}
 
@@ -31,6 +32,12 @@ export class ProfileComponent {
   promedio: number = 10;
 
   ngOnInit(){
-    this.usuariosService.getUsuariosData();
+    //this.usuariosService.getUsuariosData();
+    if(this.authToken){
+      console.log("Token: ", this.authToken);
+    } else{
+      console.log("No está autenticado");
+      
+    }
   }
 }

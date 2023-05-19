@@ -23,8 +23,6 @@ export class LoginComponent {
   checkLogin(){
     const username = this.loginForm.get('username')?.value;
     const password = this.loginForm.get('password')?.value;
-    console.log("Usuario: " + username);
-    console.log("Contraseña: " + password);
     const body = {"username": username, "contrasena": password}
     this.usuariosServices.loginUsuario(body);
   }
