@@ -1,14 +1,14 @@
 export class Nota {
   id?: number;
-  alumno: String;
-  curso: String;
-  asignatura: String;
+  idAlumno: number;
+  idCurso: number;
+  idAsignatura: number;
   nota: number;
   
-  constructor(alumno: String, curso: String, asignatura: String, nota: number){
-    this.alumno = alumno;
-    this.curso = curso;
-    this.asignatura = asignatura;
+  constructor(idAlumno: number, idCurso: number, idAsignatura: number, nota: number){
+    this.idAlumno = idAlumno;
+    this.idCurso = idCurso;
+    this.idAsignatura = idAsignatura;
     this.nota = nota;
   }
 }

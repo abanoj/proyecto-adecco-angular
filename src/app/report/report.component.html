@@ -1,20 +1,20 @@
 <div class="container d-flex text-center align-items-center" style="min-height: 90vh;">
   <main class="w-100 m-auto">
     <h1>NOTAS</h1>
-    <form class="mb-3" method="get">
+    <form class="mb-3" (ngSubmit)="buscar()" novalidate #buscarForm="ngForm">
       <div class="form-floating">
-        <input type="text" class="form-control" id="alumno" name="alumno">
-        <label for="alumno">Alumno</label>
+        <input type="text" class="form-control" id="alumno" name="alumno" [(ngModel)]="dni">
+        <label for="alumno">DNI Alumno</label>
       </div>
       <div class="form-floating">
-        <input type="text" class="form-control" id="curso" name="curso">
+        <input type="text" class="form-control" id="curso" name="curso" [(ngModel)]="cursoName">
         <label for="curso">Curso</label>
       </div>
       <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="asignatura" name="asignatura">
+        <input type="text" class="form-control" id="asignatura" name="asignatura" [(ngModel)]="asignaturaName">
         <label for="asignatura">Asignatura</label>
       </div>
-      <button type="submit" class="w-100 btn btn-primary">Buscar</button>
+      <input type="submit" class="w-100 btn btn-primary" [disabled]="!buscarForm.valid" value="Buscar">
     </form>
 
     <button type="submit" class="w-100 mb-3 btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalAgregarNota">Agregar Nota</button>
@@ -23,6 +23,7 @@
       <thead>
         <tr>
           <th scope="col">#</th>
+          <th scope="col">DNI</th>
           <th scope="col">Alumno</th>
           <th scope="col">Curso</th>
           <th scope="col">Asignatura</th>
@@ -33,9 +34,10 @@
       <tbody>
         <tr *ngFor="let nota of notas; let i = index">
           <th scope="row">{{i+1}}</th>
-          <td>{{nota.alumno}}</td>
-          <td>{{nota.curso}}</td>
-          <td>{{nota.asignatura}}</td>
+          <td>DNI</td>
+          <td>{{nota.idAlumno}}</td>
+          <td>{{nota.idCurso}}</td>
+          <td>{{nota.idAsignatura}}</td>
           <td>{{nota.nota}}</td>
           <td><a href="" (click)="leerFila(nota)" target="_blank" rel="noopener noreferrer" data-bs-toggle="modal"
               data-bs-target="#modalEditarNota"><img src="../../assets/img/edit.png" alt="Logo editar"></a></td>
@@ -53,9 +55,9 @@
         </div>
         <div class="modal-body">
           <form [formGroup]="editNotaForm" (ngSubmit)="editNotaSubmit()">
-            <input type="text" class="form-control mb-3" value="{{myNota?.curso}}" disabled>
-            <input type="text" class="form-control mb-3" value="{{myNota?.asignatura}}" disabled>
-            <input type="text" class="form-control mb-3" value="{{myNota?.alumno}}" disabled>
+            <input type="text" class="form-control mb-3" value="{{myNota?.idCurso}}" disabled>
+            <input type="text" class="form-control mb-3" value="{{myNota?.idAsignatura}}" disabled>
+            <input type="text" class="form-control mb-3" value="{{myNota?.idAlumno}}" disabled>
             <input type="number" class="form-control mb-3" min="0" max="10" step="0.1" formControlName="nota" [value]="myNota?.nota">
             <div class="text-center">
               <input type="button" class="btn mx-1 btn-danger" data-bs-toggle="modal" data-bs-target="#modalConfirmar" value="Borrar">
