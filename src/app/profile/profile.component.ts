@@ -10,34 +10,20 @@ import { UsuariosService } from '../usuarios.service';
 })
 
 export class ProfileComponent {
-  usuarios: any;
-  authToken = localStorage.getItem('authToken');
-
-  constructor(private usuariosService: UsuariosService){}
-
-  usuario: Usuario = {
-    dni: "86257123N",
-    nombre: "Luke",
-    apellido: "Skywalker",
-    username: "lskywalker",
-    password: "l21sa@848$",
-    telefono: 612345678,
-    email: "lskywalker@mail.com",
-    direccion: "Tatooine",
-    tipo: 1,
-    activo: true
-  }
-
+  usuario!: Usuario;
   curso: String = "Programación Web FullStack";
   promedio: number = 10;
 
+  constructor(private usuariosService: UsuariosService){}
+
   ngOnInit(){
-    //this.usuariosService.getUsuariosData();
-    if(this.authToken){
-      console.log("Token: ", this.authToken);
-    } else{
-      console.log("No está autenticado");
-      
-    }
+    this.usuariosService.getOne(1).subscribe(
+      data => {
+        this.usuario = data;
+      },
+      err => {
+        console.log(err.err);
+      }
+    );
   }
 }

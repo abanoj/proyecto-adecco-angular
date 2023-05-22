@@ -1,17 +1,17 @@
 <div class="container d-flex text-center align-items-center" style="min-height: 90vh;">
   <main class="col-md-6 mx-auto">
     <h1>LOGIN</h1>
-    <form [formGroup]="loginForm" (submit)="checkLogin()">
+    <form (ngSubmit)="loginUser()" novalidate #loginForm="ngForm">
       <div class="row mb-3">
         <label for="username" class="col-lg-2 col-form-label">Usuario</label>
         <div class="col-lg-10">
-          <input type="text" id="username" class="form-control" name="username" formControlName="username" #username>
+          <input type="text" id="username" class="form-control" name="username" [(ngModel)]="username" required>
         </div>
       </div>
       <div class="row mb-3">
         <label for="password" class="col-lg-2 col-form-label">Contraseña</label>
         <div class="col-lg-10">
-          <input type="password" id="password" class="form-control" name="password" formControlName="password" #password>
+          <input type="password" id="password" class="form-control" name="password" [(ngModel)]="password" required>
         </div>
       </div>
       <input type="submit" class="btn btn-primary col-8 text-center" [disabled]="!loginForm.valid" value="Login">

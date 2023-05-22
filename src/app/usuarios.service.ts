@@ -1,36 +1,36 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Usuario } from './usuario';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class UsuariosService {
-  items: any = [];
+  
+  usuarioURL = 'http://localhost:8080/api/usuario/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
-  getUsuariosData(){
-    return this.http.get('/assets/usuarios.json').subscribe(
-      data => {
-        console.log(data);        
-      },
-      error => {
-        console.log(error);
-        
-      }
-    );
-  } 
-
-  loginUsuario(body: object){
-    this.http.post('http://localhost:8080/api/usuario/login', body, { responseType: 'text'}).subscribe(
-      (token: string) => {
-        console.log('Token Auth: ', token);
-        localStorage.setItem('authToken', token);        
-      },
-      error => {
-        console.log("Login error: ", error);
-      }
-    );
+  public allUsers(): Observable<Usuario[]> {
+    return this.httpClient.get<Usuario[]>(this.usuarioURL + 'all');
   }
+
+  public getOne(id: number): Observable<Usuario> {
+    return this.httpClient.get<Usuario>(this.usuarioURL + id);
+  }
+
+  public getByDNI(dni: string): Observable<Usuario> {
+    return this.httpClient.get<Usuario>(this.usuarioURL + `dni/${dni}`);
+  }
+
+  public getByUsername(username: string): Observable<Usuario> {
+    return this.httpClient.get<Usuario>(this.usuarioURL + `username/${username}`);
+  }
+
+  public login(usuario: Usuario): Observable<any> {
+    return this.httpClient.post<any>(this.usuarioURL + 'login', usuario);
+  }
+
 }

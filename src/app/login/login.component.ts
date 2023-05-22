@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { UsuariosService } from '../usuarios.service';
+import { Usuario } from '../usuario';
 
 @Component({
   selector: 'app-login',
@@ -10,20 +10,22 @@ import { UsuariosService } from '../usuarios.service';
 })
 export class LoginComponent {
 
-  hola: string = '';
+  username: string = '';
+  password: string = '';
 
   constructor(private http: HttpClient,
               private usuariosServices: UsuariosService){}
 
-  loginForm = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl('')
-  });
-
-  checkLogin(){
-    const username = this.loginForm.get('username')?.value;
-    const password = this.loginForm.get('password')?.value;
-    const body = {"username": username, "contrasena": password}
-    this.usuariosServices.loginUsuario(body);
+  loginUser(){
+    const usuario = new Usuario(this.username, this.password);
+    this.usuariosServices.login(usuario).subscribe(
+      data => {
+        console.log(data);        
+      },
+      err => {
+        console.log(err.error);
+      }
+    );
   }
+
 }

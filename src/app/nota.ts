@@ -1,4 +1,5 @@
-export class Nota {  
+export class Nota {
+  id?: number;
   alumno: String;
   curso: String;
   asignatura: String;
