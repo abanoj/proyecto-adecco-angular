@@ -1,14 +1,18 @@
+import { Asignatura } from "./asignatura";
+import { Curso } from "./curso";
+import { Usuario } from "./usuario";
+
 export class Nota {
   id?: number;
-  idAlumno: number;
-  idCurso: number;
-  idAsignatura: number;
+  alumno: Usuario;
+  curso: Curso;
+  asignatura: Asignatura;
   nota: number;
   
-  constructor(idAlumno: number, idCurso: number, idAsignatura: number, nota: number){
-    this.idAlumno = idAlumno;
-    this.idCurso = idCurso;
-    this.idAsignatura = idAsignatura;
+  constructor(alumno: Usuario, curso: Curso, asignatura: Asignatura, nota: number){
+    this.alumno = alumno;
+    this.curso = curso;
+    this.asignatura = asignatura;
     this.nota = nota;
   }
 }

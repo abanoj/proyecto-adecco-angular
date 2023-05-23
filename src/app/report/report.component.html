@@ -1,7 +1,7 @@
 <div class="container d-flex text-center align-items-center" style="min-height: 90vh;">
   <main class="w-100 m-auto">
     <h1>NOTAS</h1>
-    <form class="mb-3" (ngSubmit)="buscar()" novalidate #buscarForm="ngForm">
+    <form class="mb-3" (ngSubmit)="findNotas(dni, cursoName, asignaturaName)" novalidate #buscarForm="ngForm">
       <div class="form-floating">
         <input type="text" class="form-control" id="alumno" name="alumno" [(ngModel)]="dni">
         <label for="alumno">DNI Alumno</label>
@@ -34,10 +34,10 @@
       <tbody>
         <tr *ngFor="let nota of notas; let i = index">
           <th scope="row">{{i+1}}</th>
-          <td>DNI</td>
-          <td>{{nota.idAlumno}}</td>
-          <td>{{nota.idCurso}}</td>
-          <td>{{nota.idAsignatura}}</td>
+          <td>{{nota.alumno.dni}}</td>
+          <td>{{nota.alumno.nombre}} {{nota.alumno.apellido}}</td>
+          <td>{{nota.curso.nombre}}</td>
+          <td>{{nota.asignatura.nombre}}</td>
           <td>{{nota.nota}}</td>
           <td><a href="" (click)="leerFila(nota)" target="_blank" rel="noopener noreferrer" data-bs-toggle="modal"
               data-bs-target="#modalEditarNota"><img src="../../assets/img/edit.png" alt="Logo editar"></a></td>
@@ -55,9 +55,9 @@
         </div>
         <div class="modal-body">
           <form [formGroup]="editNotaForm" (ngSubmit)="editNotaSubmit()">
-            <input type="text" class="form-control mb-3" value="{{myNota?.idCurso}}" disabled>
-            <input type="text" class="form-control mb-3" value="{{myNota?.idAsignatura}}" disabled>
-            <input type="text" class="form-control mb-3" value="{{myNota?.idAlumno}}" disabled>
+            <input type="text" class="form-control mb-3" value="{{myNota?.curso?.nombre}}" disabled>
+            <input type="text" class="form-control mb-3" value="{{myNota?.asignatura?.nombre}}" disabled>
+            <input type="text" class="form-control mb-3" value="{{myNota?.alumno?.nombre}} {{myNota?.alumno?.apellido}}" disabled>
             <input type="number" class="form-control mb-3" min="0" max="10" step="0.1" formControlName="nota" [value]="myNota?.nota">
             <div class="text-center">
               <input type="button" class="btn mx-1 btn-danger" data-bs-toggle="modal" data-bs-target="#modalConfirmar" value="Borrar">
@@ -91,7 +91,7 @@
   </div>
   <!-- /Modal Confirmar Borrar -->
   <!-- Modal Agregar Notas -->
-  <div class="modal fade" id="modalAgregarNota" tabindex="-1" aria-labelledby="agregarNotaLabel" aria-hidden="true">
+  <!-- <div class="modal fade" id="modalAgregarNota" tabindex="-1" aria-labelledby="agregarNotaLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -112,7 +112,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <!-- /Modal Agregar Notas -->
 
 </div>

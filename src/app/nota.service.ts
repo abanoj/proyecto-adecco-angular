@@ -31,4 +31,9 @@ export class NotaService {
   public editNota(id: number, nota: Nota): Observable<any> {
     return this.httpClient.put<any>(this.notaUrl + id, nota);
   }
+
+  public findNotas(dniUsuario: string, nombreCurso: string, nombreAsignatura: string): Observable<Nota[]>{
+    const params = {dniUsuario, nombreCurso, nombreAsignatura}    
+    return this.httpClient.get<Nota[]>(this.notaUrl, { params });
+  }
 }
