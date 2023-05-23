@@ -9,7 +9,7 @@
       <div class="form-floating">
         <!-- <input type="text" class="form-control" id="curso" name="curso" [(ngModel)]="cursoName"> -->
         <!-- <label for="curso">Curso</label> -->
-        <select class="form-control" name="selectedtCurso" [(ngModel)]="selectedCurso">
+        <select class="form-control" name="selectedCurso" [(ngModel)]="selectedCurso">
           <option value="">Seleccionar Curso</option>
           <option *ngFor="let curso of cursos" value="{{curso.nombre}}">{{curso.nombre}}</option>
         </select>
@@ -99,7 +99,7 @@
   </div>
   <!-- /Modal Confirmar Borrar -->
   <!-- Modal Agregar Notas -->
-  <!-- <div class="modal fade" id="modalAgregarNota" tabindex="-1" aria-labelledby="agregarNotaLabel" aria-hidden="true">
+  <div class="modal fade" id="modalAgregarNota" tabindex="-1" aria-labelledby="agregarNotaLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -107,11 +107,19 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form [formGroup]="addNotaForm" (ngSubmit)="addNotaSubmit()">
-            <input type="text" class="form-control mb-3" placeholder="curso" formControlName="curso" required>
-            <input type="text" class="form-control mb-3" placeholder="asignatura" formControlName="asignatura" required>
-            <input type="text" class="form-control mb-3" placeholder="alumno" formControlName="alumno" required>
-            <input type="number" class="form-control mb-3" min="0" max="10" step="0.1" formControlName="nota" required>
+          <form (ngSubmit)="addNotaSubmit()" novalidate #addNotaForm="ngForm">
+            <!-- <input type="text" class="form-control mb-3" placeholder="curso" formControlName="curso" required> -->
+            <select class="form-control mb-3" name="addCurso" [(ngModel)]="addCurso" required>
+              <option value="">Seleccionar Curso</option>
+              <option *ngFor="let curso of cursos" value="{{curso.id}}">{{curso.nombre}}</option>
+            </select>    
+            <!-- <input type="text" class="form-control mb-3" placeholder="asignatura" formControlName="asignatura" required> -->
+            <select class="form-control mb-3" name="addAsignatura" [(ngModel)]="addAsignatura" required>
+              <option value="">Seleccionar Asignatura</option>
+              <option *ngFor="let asignatura of asignaturas" value="{{asignatura.id}}">{{asignatura.nombre}}</option>
+            </select>    
+            <input type="text" class="form-control mb-3" placeholder="DNI Alumno" required>
+            <input type="number" class="form-control mb-3" min="0" max="10" step="0.1" required>
             <div class="text-center">
               <input type="button" class="btn mx-1 btn-danger" data-bs-dismiss="modal" value="Cerrar">
               <input type="submit" class="btn mx-1 btn-primary" [disabled]="!addNotaForm.valid" value="Guardar">
@@ -120,7 +128,7 @@
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
   <!-- /Modal Agregar Notas -->
 
 </div>

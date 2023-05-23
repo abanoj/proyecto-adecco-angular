@@ -27,6 +27,8 @@ export class ReportComponent {
   dni: string = '';
   selectedCurso = '';
   selectedAsignatura = '';
+  addCurso!: Curso;
+  addAsignatura!: Asignatura;
 
   constructor(
     private notaService: NotaService,
@@ -38,19 +40,6 @@ export class ReportComponent {
     this.cursoService.getAll().subscribe(data => this.cursos = data);
     this.asignaturaService.getAll().subscribe(data => this.asignaturas = data);
   }
-  // addNotaForm = new FormGroup ({
-  //   alumno: new FormControl(''),
-  //   curso: new FormControl(''),
-  //   asignatura: new FormControl(''),
-  //   nota: new FormControl(0),
-  // });
-
-  // editNotaForm = new FormGroup ({
-  //   alumno: new FormControl(this.notaSeleccionada?.alumno),
-  //   curso: new FormControl(this.notaSeleccionada?.curso),
-  //   asignatura: new FormControl(this.notaSeleccionada?.asignatura),
-  //   nota: new FormControl(this.notaSeleccionada?.nota),
-  // });
 
   findNotas(dniUsuario: string, nombreCurso: string, nombreAsignatura: string): void{    
     this.notaService.findNotas(dniUsuario, nombreCurso, nombreAsignatura).subscribe(
@@ -60,6 +49,9 @@ export class ReportComponent {
   }
 
   addNotaSubmit(){
+    console.log("Id curso: " + this.addCurso);
+    console.log("Id asignatura: " + this.addAsignatura);
+    
   };
 
   editNotaSubmit(){
