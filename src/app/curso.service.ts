@@ -12,6 +12,10 @@ export class CursoService {
 
   constructor(private httpClient: HttpClient) { }
 
+  public getAll(): Observable<Curso[]> {
+    return this.httpClient.get<Curso[]>(this.url)
+  }
+
   public getById(id: number): Observable<Curso> {
     return this.httpClient.get<Curso>(this.url + id);
   }

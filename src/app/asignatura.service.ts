@@ -12,6 +12,10 @@ export class AsignaturaService {
 
   constructor(private httpClient: HttpClient) { }
   
+  public getAll(): Observable<Asignatura[]> {
+    return this.httpClient.get<Asignatura[]>(this.url);
+  }
+
   public getById(id: number): Observable<Asignatura> {
     return this.httpClient.get<Asignatura>(this.url + id);
   }

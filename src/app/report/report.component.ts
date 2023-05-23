@@ -20,18 +20,24 @@ import { Observable } from 'rxjs';
 export class ReportComponent {
 
   notas: Nota[] = [];
-  myNota?: Nota;
+  notaSeleccionada?: Nota;
+  cursos: Curso[] = [];
+  asignaturas: Asignatura[] = [];
+  showModal: boolean = false;
   dni: string = '';
-  cursoName = '';
-  asignaturaName = '';
+  selectedCurso = '';
+  selectedAsignatura = '';
 
   constructor(
     private notaService: NotaService,
-    private usuariosService: UsuariosService,
     private cursoService: CursoService,
     private asignaturaService: AsignaturaService
     ){}
 
+  ngOnInit(){
+    this.cursoService.getAll().subscribe(data => this.cursos = data);
+    this.asignaturaService.getAll().subscribe(data => this.asignaturas = data);
+  }
   // addNotaForm = new FormGroup ({
   //   alumno: new FormControl(''),
   //   curso: new FormControl(''),
@@ -39,12 +45,12 @@ export class ReportComponent {
   //   nota: new FormControl(0),
   // });
 
-  editNotaForm = new FormGroup ({
-    alumno: new FormControl(this.myNota?.alumno),
-    curso: new FormControl(this.myNota?.curso),
-    asignatura: new FormControl(this.myNota?.asignatura),
-    nota: new FormControl(this.myNota?.nota),
-  });
+  // editNotaForm = new FormGroup ({
+  //   alumno: new FormControl(this.notaSeleccionada?.alumno),
+  //   curso: new FormControl(this.notaSeleccionada?.curso),
+  //   asignatura: new FormControl(this.notaSeleccionada?.asignatura),
+  //   nota: new FormControl(this.notaSeleccionada?.nota),
+  // });
 
   findNotas(dniUsuario: string, nombreCurso: string, nombreAsignatura: string): void{    
     this.notaService.findNotas(dniUsuario, nombreCurso, nombreAsignatura).subscribe(
@@ -57,10 +63,18 @@ export class ReportComponent {
   };
 
   editNotaSubmit(){
+    if(this.notaSeleccionada && this.notaSeleccionada.id){
+      this.notaService.editNota(this.notaSeleccionada.id, this.notaSeleccionada).subscribe(
+        data => {console.log(data)},
+        err => {console.log(err.error)}
+      );
+    }
+    this.showModal = false;
   }
 
   leerFila(nota: Nota){
-    this.myNota = nota;
+    this.notaSeleccionada = nota;
+    this.showModal = true;
   }
 
 }
