@@ -4,8 +4,8 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 <!-- /Prueba Notificaciones -->
-<main class="container text-center">
-    <h1>Bienvenido, Nombre!</h1>
+<main class="container text-center" *ngIf="usuario">
+    <h1>Bienvenido/a, {{usuario.nombre}}</h1>
     <section class="row">
         <!-- Foto y Nombre -->
         <div class="col">
@@ -13,9 +13,9 @@
                 <div class="card-body text-center">
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
                         class="rounded-circle img-fluid" style="width: 150px;">
-                    <h5 class="my-3">Nombre Apellido</h5>
-                    <p class="text-muted mb-1">Curso: curso</p>
-                    <p class="text-muted mb-4">Promedio de Notas: notas</p>
+                    <h5 class="my-3">{{usuario.nombre}} {{usuario.apellido}}</h5>
+                    <p class="text-muted mb-1">Curso: Programación Web FullStack</p>
+                    <p class="text-muted mb-4">Promedio de Notas: 10</p>
                 </div>
             </div>
         </div>

@@ -23,6 +23,7 @@ export class ReportComponent {
   notas: Nota[] = [];
   notaSeleccionada?: Nota;
   cursos: Curso[] = [];
+  usuario!: Usuario;
   asignaturas: Asignatura[] = [];
   showModal: boolean = false;
   dni: string = '';
@@ -35,12 +36,24 @@ export class ReportComponent {
     private notaService: NotaService,
     private cursoService: CursoService,
     private asignaturaService: AsignaturaService,
+    private usuariosService: UsuariosService,
     private router: Router
     ){}
 
   ngOnInit(){
     const token = localStorage.getItem('token');
-    if(!token){
+    if(token){
+      this.usuariosService.getByToken(token).subscribe(
+        data => {
+          if(data.tipoUsuario === 1){
+            this.router.navigate(['/home']);    
+          }          
+        },
+        err => {
+          console.log(err.error.message);
+          this.router.navigate(['/login']);  
+        });
+    } else {
       this.router.navigate(['/login']);
     }
     this.cursoService.getAll().subscribe(data => this.cursos = data);
