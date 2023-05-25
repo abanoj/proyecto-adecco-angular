@@ -29,6 +29,10 @@ export class UsuariosService {
     return this.httpClient.get<Usuario>(this.usuarioURL + `username/${username}`);
   }
 
+  public getByToken(token: string): Observable<any> {
+    return this.httpClient.post<any>(this.usuarioURL + 'token', token);
+  }
+
   public login(usuario: Usuario): Observable<any> {
     return this.httpClient.post<any>(this.usuarioURL + 'login', usuario);
   }

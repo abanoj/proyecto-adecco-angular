@@ -10,6 +10,7 @@ import { Asignatura } from '../asignatura';
 import { CursoService } from '../curso.service';
 import { Curso } from '../curso';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-report',
@@ -33,10 +34,15 @@ export class ReportComponent {
   constructor(
     private notaService: NotaService,
     private cursoService: CursoService,
-    private asignaturaService: AsignaturaService
+    private asignaturaService: AsignaturaService,
+    private router: Router
     ){}
 
   ngOnInit(){
+    const token = localStorage.getItem('token');
+    if(!token){
+      this.router.navigate(['/login']);
+    }
     this.cursoService.getAll().subscribe(data => this.cursos = data);
     this.asignaturaService.getAll().subscribe(data => this.asignaturas = data);
   }

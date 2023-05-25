@@ -30,4 +30,6 @@ import { ReportComponent } from './report/report.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}

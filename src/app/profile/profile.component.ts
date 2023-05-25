@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Usuario } from '../usuario';
 import { UsuariosService } from '../usuarios.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,16 +15,24 @@ export class ProfileComponent {
   curso: String = "Programación Web FullStack";
   promedio: number = 10;
 
-  constructor(private usuariosService: UsuariosService){}
+  constructor(
+    private usuariosService: UsuariosService,
+    private router: Router
+    ){}
 
   ngOnInit(){
-    this.usuariosService.getOne(1).subscribe(
-      data => {
-        this.usuario = data;
-      },
-      err => {
-        console.log(err.err);
-      }
-    );
+    const token = localStorage.getItem('token');
+    if(token){
+      this.usuariosService.getByToken(token).subscribe(
+        data => {
+          this.usuario = data;
+        },
+        err => {
+          console.log(err.error.message);
+          this.router.navigate(['/login']);  
+        });
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 }

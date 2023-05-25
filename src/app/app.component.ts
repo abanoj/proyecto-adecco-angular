@@ -13,4 +13,17 @@ export class AppComponent {
   cerrarMenu() {
     this.navbarCollapse?.nativeElement.classList.remove('show');
   }
+
+  existsToken(): boolean {
+    if (localStorage.getItem('token') == null){
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  logout(): void {
+    localStorage.removeItem('token');
+  }
+
 }
